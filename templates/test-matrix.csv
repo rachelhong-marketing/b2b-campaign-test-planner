@@ -1,0 +1,1 @@
+test_id,channel,funnel_stage,variable,hypothesis,variant_a,variant_b,kept_constant,primary_metric,early_read_metric,planned_weeks,utm_content_a,utm_content_b,status,result_a,result_b,decision,learning,next_test
