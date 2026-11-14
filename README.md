@@ -30,7 +30,17 @@ your funnel rates + budget + lag
        validate  --->  one clean, one-variable test per row
 ```
 
-## Quick start
+## Use it with Claude Code (no commands to type)
+
+The repo includes a Claude Code skill, `.claude/skills/b2b-test-planner/SKILL.md`. Download the repo, open the folder in Claude Code, and ask in plain English:
+
+- "Can I test two LinkedIn headlines on MQLs? CTR is 0.8%, 3% of clicks become leads, 25% of leads become MQLs, $9 per click, about 1,200 clicks per version a week."
+- "Version A got 20 qualified leads from 879 clicks, B got 31 from 880. Did B win?"
+- "Read sample-data/fake-results.csv and tell me which version won."
+- "Check my test matrix."
+
+The skill picks the right command, asks for any missing numbers instead of guessing, runs the planner and explains the result in plain English. It ends with a suggested next test. The math always comes from the Python code, not the AI.
+## Quick start (command line)
 
 ```bash
 python3 -m planner funnel --ctr 0.01 --lead-rate 0.03 --mql-rate 0.20 --sql-rate 0.25 \
