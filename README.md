@@ -132,7 +132,7 @@ Five tools, one per step of a B2B campaign, from the brief to proving pipeline. 
 
 | Step | Tool | What it does |
 |---|---|---|
-| 1. Plan | [B2B Campaign Assistant](https://github.com/rachelhong-marketing/b2b-campaign-assistant) | Draft the master brief, channel briefs, keywords, landing page and ad copy from your go-to-market plan, and check them before launch. |
+| 1. Plan | [B2B Campaign Assistant](https://github.com/rachelhong-marketing/b2b-campaign-assistant) | Brainstorm the campaign theme, write the campaign plan and master brief, then draft channel briefs, keywords, landing page and ad copy, all checked before launch. |
 | 2. Set up | [B2B Paid Media Planner](https://github.com/rachelhong-marketing/b2b-paid-media-planner) | Plan channels and retargeting, then build and check tracking links before launch. |
 | 3. Test | **B2B Campaign Test Planner** (this repo) | Size tests on leads and MQLs, not clicks, and read the results. |
 | 4. Report | [B2B Campaign Reporting Agent](https://github.com/rachelhong-marketing/b2b-campaign-reporting-agent) | Consolidate ad platform and CRM data into one file, check every channel and funnel stage for gaps, and draft insights. |
