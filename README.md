@@ -4,11 +4,49 @@
 >
 > [1. Plan](https://github.com/rachelhong-marketing/b2b-campaign-assistant) → [2. Set up](https://github.com/rachelhong-marketing/b2b-paid-media-planner) → **3. Test** → [4. Report](https://github.com/rachelhong-marketing/b2b-campaign-reporting-agent) → [5. Prove](https://github.com/rachelhong-marketing/b2b-pipeline-attribution-tool)
 
-Plan B2B campaign tests around the metric that actually matters: leads, MQLs (marketing qualified leads) and SQLs (sales qualified leads), not clicks. Python, standard library only.
+Plan, run and learn from B2B paid media tests that a real team can keep up with: a ready-to-use Excel planner for the day to day, plus Python checks for when budgets or audiences are small. Python, standard library only.
 
 All data and examples here are made up. Nothing comes from a real company.
 
-## Why B2B tests are different
+## Start here: the test planner workbook
+
+`templates/test-planner.xlsx` is a working planner for a sample campaign (Fernhill Software, "2026-Q3 Clean Customer Data"). Open it in Excel or Google Sheets. No code needed.
+
+| Tab | What it's for |
+|---|---|
+| Test Plan | Tests in waves, one row per test and channel, one variable each, with a hypothesis that has a "because" |
+| Tracking Links | Builds each version's tagged link from the plan with formulas, plus the Google final URL suffix |
+| How Long to Run | Which platform tool to use, what confidence to set, plan 4 weeks, never stop before 2, stop by 8 |
+| Results Log | Copy in the platform's numbers and result; CTR, MQL rate and a quality flag calculate |
+| Learning Library | One line per finished test: what won, why, what to test next |
+| Channel Rules | What keeps a Google Ads or LinkedIn test clean |
+
+### The practical way to run a test
+
+1. **Plan.** Pick the next wave. Change one thing. Write the "because."
+2. **Let the platform call the winner.** Use Google Ads Experiments or LinkedIn's A/B test, set the confidence (95% on Google, 90% on LinkedIn), plan 4 weeks, and don't stop before week 2.
+3. **Early read:** clicks, CTR and leads.
+4. **Quality check:** MQLs in the CRM, by `utm_content`. A version that wins on clicks but loses on MQLs doesn't win; the Results Log flags it.
+5. **Log the learning** so the next wave builds on it.
+
+### The sample test waves
+
+| Wave | Paid search | Paid social |
+|---|---|---|
+| 1 | Role callout vs. general headline | Same idea |
+| 2 | Category vs. competitor-alternative keywords | Single image vs. document ad |
+| 3 | Question vs. statement headline | Same idea |
+| 4 | Customer proof line vs. none | Same idea |
+| 5 | Short vs. long form on the landing page | Same idea |
+| 6 | | Job titles vs. job function + seniority |
+
+Test IDs are wave + channel (`W1-Search`, `W1-Social`). Running one idea on both channels shows whether it holds across them.
+
+## When volume is small: check before you spend
+
+The platforms can only call a winner if there's enough data. In B2B there often isn't, so use the Python planner below before launching a test on a small budget or account list. It tells you which funnel stage you can actually decide on, and when.
+
+### Why B2B tests are different
 
 Most A/B test calculators assume a consumer funnel: lots of traffic, a purchase minutes after the click, one person per buyer. B2B breaks all three.
 
@@ -19,7 +57,7 @@ Most A/B test calculators assume a consumer funnel: lots of traffic, a purchase 
 | **Buyers are accounts, not people.** Five people from one company tend to act alike. | Five leads from one account get counted as five independent results, so tests look more certain than they are. | `size` and `funnel` adjust the sample size for leads per account. |
 | **Audiences are small.** An account list or job-title audience may be a few thousand people. | The list gets split in two, falls under the ad platform's minimum, or shows the same ad to the same people dozens of times. | `funnel` warns when each version is under your platform's minimum or would need too many views per person. |
 
-## What it does
+### What it does
 
 ```
 your funnel rates + budget + lag
@@ -34,7 +72,7 @@ your funnel rates + budget + lag
        validate  --->  one clean, one-variable test per row
 ```
 
-## Use it with Claude Code (no commands to type)
+### Use it with Claude Code (no commands to type)
 
 The repo includes a Claude Code skill, `.claude/skills/b2b-test-planner/SKILL.md`. Download the repo, open the folder in Claude Code, and ask in plain English:
 
@@ -44,7 +82,7 @@ The repo includes a Claude Code skill, `.claude/skills/b2b-test-planner/SKILL.md
 - "Check my test matrix."
 
 The skill picks the right command, asks for any missing numbers instead of guessing, runs the planner and explains the result in plain English. It ends with a suggested next test. The math always comes from the Python code, not the AI.
-## Quick start (command line)
+### Quick start (command line)
 
 ```bash
 python3 -m planner funnel --ctr 0.01 --lead-rate 0.03 --mql-rate 0.20 --sql-rate 0.25 \
@@ -54,7 +92,7 @@ python3 -m planner validate sample-data/test-matrix.sample.csv
 python3 -m unittest discover -s tests
 ```
 
-### Example: what does it take to decide on MQLs?
+#### Example: what does it take to decide on MQLs?
 
 ```
 To detect a 50% lift, per version:
@@ -72,7 +110,7 @@ Track SQL as direction only, and judge deeper stages over a quarter or across se
 
 Reading it: each stage needs about the same number of outcomes (~85 per version), but the deeper the stage, the more clicks and money it takes to get them. SQL would take 47 weeks and $460K per version, so it can't decide a single test.
 
-### Example: a small account-based audience
+#### Example: a small account-based audience
 
 ```
 python3 -m planner funnel --ctr 0.008 --lead-rate 0.04 --mql-rate 0.25 --lift 0.5 \
@@ -84,7 +122,7 @@ Warning: Each person would need to see the ad about 259 times to reach the impre
 
 Use the matched audience size (after the platform matches your list), not the size of the list you uploaded. Platform minimums change, so look up the current one and pass it in.
 
-### Example: clicks say B wins, qualified leads don't
+#### Example: clicks say B wins, qualified leads don't
 
 `sample-data/fake-results.csv` is four weeks of made-up results.
 
@@ -99,7 +137,7 @@ qualified_leads / clicks:  A 0.35%   B 0.50%   p-value 0.541
 
 B got more clicks. It did not get more leads or more qualified leads. That is the most common B2B testing mistake, caught.
 
-## All commands
+### All commands
 
 | Command | Use it to |
 |---|---|
@@ -110,13 +148,19 @@ B got more clicks. It did not get more leads or more qualified leads. That is th
 | `report` | Read a weekly results file stage by stage. Columns: week, variant, what was shown, clicks, then later stages. |
 | `validate` | Check a test matrix for missing fields, two-variable tests, identical tracking tags, and a primary metric that is just the early read. |
 
-## The test matrix
+### The test matrix (CSV)
 
-One row per test. See `templates/test-matrix.csv` and `sample-data/test-matrix.sample.csv`. Columns: test id, channel, funnel stage, variable, hypothesis, variant A and B, what stays constant, primary metric, early-read metric, planned weeks, tracking tags for each variant, then status, results, decision, learning and next test.
+The same plan as the workbook's Test Plan tab, as a CSV the planner can check: `templates/test-matrix.csv` (blank) and `sample-data/test-matrix.sample.csv` (the sample waves). Columns: test id, wave, channel, funnel stage, variable, hypothesis, variant A and B, what stays constant, primary metric, early-read metric, test tool, planned weeks, tracking tags for each variant, then status, results, decision, learning and next test.
+
+`planner validate` flags missing fields, two-variable tests, identical tracking tags, an early read used as the deciding metric, and run lengths under 2 or over 8 weeks.
 
 `docs/test-taxonomy.md` maps familiar email tests (subject lines, urgency, personalization, tone) to paid search and paid social.
 
 `docs/agent-instructions-template.md` is a starting point for an AI assistant that plans and reads tests, with guardrail checks.
+
+### Rebuild the workbook (optional)
+
+`tools/build_workbook.py` writes the workbook and the sample CSV from one plan. It's the only part that needs a library: `pip install openpyxl`, then `python3 tools/build_workbook.py`.
 
 ## Assumptions and limits
 
@@ -134,7 +178,7 @@ Five tools, one per step of a B2B campaign, from the brief to proving pipeline. 
 |---|---|---|
 | 1. Plan | [B2B Campaign Assistant](https://github.com/rachelhong-marketing/b2b-campaign-assistant) | Brainstorm the campaign theme, write the campaign plan and master brief, then draft channel briefs, keywords, landing page and ad copy, all checked before launch. |
 | 2. Set up | [B2B Paid Media Planner](https://github.com/rachelhong-marketing/b2b-paid-media-planner) | Plan channels and retargeting, then build and check tracking links before launch. |
-| 3. Test | **B2B Campaign Test Planner** (this repo) | Size tests on leads and MQLs, not clicks, and read the results. |
+| 3. Test | **B2B Campaign Test Planner** (this repo) | Plan tests in waves, let the ad platform call the winner, check MQLs, and size tests when volume is small. |
 | 4. Report | [B2B Campaign Reporting Agent](https://github.com/rachelhong-marketing/b2b-campaign-reporting-agent) | Consolidate ad platform and CRM data into one file, check every channel and funnel stage for gaps, and draft insights. |
 | 5. Prove | [B2B Pipeline Attribution Tool](https://github.com/rachelhong-marketing/b2b-pipeline-attribution-tool) | Check the CRM data can be trusted, then show sourced and influenced pipeline. |
 

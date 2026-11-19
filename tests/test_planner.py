@@ -1,4 +1,4 @@
-import unittest, tempfile, os
+import unittest, tempfile, os, zipfile
 from planner import stats, matrix, b2b
 
 
@@ -49,6 +49,32 @@ class MatrixTests(unittest.TestCase):
         row = "T1,Search,Consideration,headline,h,a,b,landing page,leads,ctr,4,same,same"
         problems = matrix.validate_file(self._write(header + "\n" + row + "\n"))
         self.assertTrue(any("utm_content" in p for p in problems))
+
+    def test_run_length_outside_two_to_eight_weeks_is_flagged(self):
+        header = ",".join(matrix.REQUIRED)
+        short = "T1,Search,Consideration,headline,h,a,b,landing page,MQLs,CTR,1,x,y"
+        long_ = "T2,Search,Consideration,headline,h,a,b,landing page,MQLs,CTR,12,x,y"
+        problems = matrix.validate_file(self._write(header + "\n" + short + "\n" + long_ + "\n"))
+        self.assertTrue(any("too short" in p for p in problems))
+        self.assertTrue(any("too long" in p for p in problems))
+
+    def test_sample_plan_uses_wave_channel_ids_and_both_tools(self):
+        import csv
+        here = os.path.dirname(os.path.dirname(__file__))
+        with open(os.path.join(here, "sample-data", "test-matrix.sample.csv"), encoding="utf-8") as fh:
+            rows = list(csv.DictReader(fh))
+        self.assertTrue(all(r["test_id"].startswith("W" + r["wave"] + "-") for r in rows))
+        self.assertEqual({r["test_tool"] for r in rows}, {"Google Ads Experiments", "LinkedIn A/B test"})
+        self.assertFalse(any("quiz" in " ".join(r.values()).lower() for r in rows))
+
+
+class WorkbookTests(unittest.TestCase):
+    def test_workbook_has_every_tab(self):
+        here = os.path.dirname(os.path.dirname(__file__))
+        with zipfile.ZipFile(os.path.join(here, "templates", "test-planner.xlsx")) as z:
+            wbxml = z.read("xl/workbook.xml").decode("utf-8")
+        for tab in ("How to use", "Test Plan", "Tracking Links", "How Long to Run", "Results Log", "Learning Library", "Channel Rules"):
+            self.assertIn(f'name="{tab}"', wbxml)
 
 
 class B2BTests(unittest.TestCase):

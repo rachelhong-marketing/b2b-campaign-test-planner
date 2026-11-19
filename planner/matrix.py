@@ -6,7 +6,9 @@ REQUIRED = [
     "kept_constant", "primary_metric", "early_read_metric", "planned_weeks",
     "utm_content_a", "utm_content_b",
 ]
+OPTIONAL = ["wave", "test_tool"]
 MULTI_VARIABLE_HINTS = (" and ", " + ", ",", "&", " plus ")
+MIN_WEEKS, MAX_WEEKS = 2, 8
 
 
 def validate_row(row, line):
@@ -25,6 +27,17 @@ def validate_row(row, line):
         problems.append(f"line {line}: utm_content values must differ so results can be told apart")
     if (row.get("primary_metric") or "").strip().lower() == (row.get("early_read_metric") or "").strip().lower() and row.get("primary_metric"):
         problems.append(f"line {line}: primary metric and early-read metric are the same; early read is direction only, the primary metric decides")
+    weeks = (row.get("planned_weeks") or "").strip()
+    if weeks:
+        try:
+            w = float(weeks)
+        except ValueError:
+            problems.append(f"line {line}: 'planned_weeks' should be a number of weeks, got {weeks!r}")
+        else:
+            if w < MIN_WEEKS:
+                problems.append(f"line {line}: {weeks} weeks is too short; run at least {MIN_WEEKS} weeks to cover weekday and weekend patterns")
+            elif w > MAX_WEEKS:
+                problems.append(f"line {line}: {weeks} weeks is too long; stop by week {MAX_WEEKS} and test a bigger change if there's no winner")
     return problems
 
 

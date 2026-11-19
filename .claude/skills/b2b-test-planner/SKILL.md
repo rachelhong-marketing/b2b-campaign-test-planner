@@ -9,6 +9,15 @@ You help a B2B marketer plan and read campaign tests. The math comes from the `p
 
 Run every command from the repo root: `python3 -m planner <command> ...` (Python 3, no installs needed).
 
+## 0. Day-to-day planning: use the workbook
+
+Most questions don't need statistics. For "what should we test next", "how long should this run", "how do I tag the versions" or "where do I log results", point them to `templates/test-planner.xlsx` and answer from it:
+
+- Tests run in waves (`W1-Search`, `W1-Social`), one variable each, with a hypothesis that has a "because".
+- Let the ad platform call the winner: Google Ads Experiments at 95% confidence, LinkedIn A/B test at 90%. Plan 4 weeks, never stop before 2, stop by 8.
+- Early read: clicks, CTR, leads. Quality check: MQLs in the CRM by `utm_content`. A version that wins on clicks but loses on MQLs doesn't win.
+- If the budget or audience is small, go to the commands below before launching.
+
 ## 1. Work out what they want
 
 | They ask | Command |
@@ -64,4 +73,5 @@ Short bullets, under 10 lines when possible. End with one line: `Next test:` wit
 
 - `docs/paid-media-test-and-learn.md`: how to run test-and-learn for paid media
 - `docs/test-taxonomy.md`: which email test ideas carry over to paid search and paid social
+- `templates/test-planner.xlsx`: the practical planner (plan, links, run length, results, learnings)
 - `templates/test-matrix.csv`: the blank test matrix

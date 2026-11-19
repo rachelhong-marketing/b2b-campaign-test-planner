@@ -23,8 +23,8 @@ A/B testing paid media in B2B is harder than B2C because the volumes are small. 
 |---|---|---|
 | **1. Plan** | Pick one variable, write a hypothesis with a "because," list what stays constant, check whether volume allows a winner | Campaign manager + channel owner |
 | **2. Launch** | Tag each variant with UTM parameters; keep all other variables identical (same audience, budget, landing page, dates) | Channel owner |
-| **3. Early read** | At the preset end date, record CTR and click-to-lead rate for each variant | Channel owner |
-| **4. Quality check** | At quarter end, check MQL and SQL by variant — not to pick a winner, but to flag if the "winning" variant produces clearly worse leads | Channel owner + marketing ops |
+| **3. Early read** | Clicks, CTR and leads. The platform's experiment tool marks the winner at your confidence level | Channel owner |
+| **4. Quality check** | 2–4 weeks after the test ends, check MQLs in the CRM by `utm_content`, to flag if the "winning" variant produces clearly worse leads | Channel owner + marketing ops |
 | **5. Log the learning** | One line in the Learning Library: what won, why you think so, confidence level, what to test next | Campaign manager |
 | **6. Share** | Copywriters and channel planners use the Learning Library before writing new copy or planning new tests | Shared by whole team |
 
@@ -95,15 +95,27 @@ For Google Search, also set `utm_term={keyword}` at the account level so keyword
 
 ---
 
-## Step 5: Calling a Winner at Low Volumes
+## Step 5: Let the Platform Call the Winner
 
-Since most B2B teams can't run a clean statistical test on lead quality, use this working rule:
+Google Ads and LinkedIn already run the statistics. Use their built-in tools instead of comparing two ad groups or campaigns by hand.
 
-1. **Pre-set the end date and the primary metric.** No stopping early because one variant looks good in week one.
-2. **Lead on CTR or click-to-lead rate** for the early read. A variant is "ahead" if the difference is real (use a significance calculator) or large and consistent over the full test window.
-3. **Use MQL/SAL as a quality flag, not a decision metric.** If the winning variant produces clearly fewer MQLs per lead, flag it — don't scale it.
-4. **Call small differences "no clear winner."** Log the learning anyway. Test a bigger change next.
-5. **Pool learnings across similar tests.** After 3+ tests of the same variable type (e.g., problem-led vs. outcome-led headlines), look at the pattern across all of them.
+| | Google Ads | LinkedIn |
+|---|---|---|
+| Tool | Experiments (ad variations for copy; custom experiment for keywords or landing pages) | Campaign Manager A/B test |
+| Confidence to set | 95% | 90% (LinkedIn recommends at least 90%) |
+| Plan to run | 4 weeks | 4 weeks |
+| Never stop before | 2 weeks | 2 weeks |
+| Stop by | 8 weeks | 8 weeks |
+
+Working rules:
+
+1. **Pre-set the end date and the confidence level.** No stopping early because one variant looks good in week one.
+2. **The platform calls the early-read winner** (CTR, then leads). Copy its result and confidence into the Results Log.
+3. **MQLs are the quality check.** If the winning variant produces a clearly lower MQL rate, flag it and don't scale it.
+4. **No winner by the stop date means the versions perform about the same.** Log it and test a bigger change next.
+5. **Small budget or audience?** Run `planner funnel` first. If it says only CTR can be read, treat leads and MQLs as direction only, and pool learnings across similar tests.
+
+Platform settings change, so check the current help pages before you launch.
 
 ---
 
