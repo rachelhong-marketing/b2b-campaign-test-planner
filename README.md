@@ -154,7 +154,7 @@ The same plan as the workbook's Test Plan tab, as a CSV the planner can check: `
 
 `planner validate` flags missing fields, two-variable tests, identical tracking tags, an early read used as the deciding metric, and run lengths under 2 or over 8 weeks.
 
-`docs/test-taxonomy.md` maps familiar email tests (subject lines, urgency, personalization, tone) to paid search and paid social.
+`docs/test-taxonomy.md` is a list of paid search and paid social test ideas (headlines, keywords, ad formats, forms, audiences), with what to hold constant and what to watch out for.
 
 `docs/agent-instructions-template.md` is a starting point for an AI assistant that plans and reads tests, with guardrail checks.
 
