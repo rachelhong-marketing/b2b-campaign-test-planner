@@ -36,7 +36,7 @@ The sample company is Fernhill Software, a made-up company that sells software t
 | Wave | What we're testing | Version A (example) | Version B (example) | Where |
 |---|---|---|---|---|
 | 1 | **Naming the buyer's role in the headline.** Does saying who the ad is for bring in better leads? | General: "Customer Data Cleanup Software" | Role: "For RevOps Teams: Clean CRM Data" | Search and social |
-| 2 | **Which searches to bid on.** People searching for the type of product vs. people searching for an alternative to a competitor they already know. | Category searches: "customer data cleanup software" | Alternative searches: "Tidybase alternative", "Tidybase vs" (Tidybase is a made-up competitor) | Search |
+| 2 | **Problem-led vs. solution-led headline.** Does naming the pain bring better leads than naming the fix? The keywords stay the same. | Problem-led: "Bad CRM Data Is Costing You Leads" | Solution-led: "One Clean Record for Every Lead" | Search |
 | 2 | **Ad format.** A plain image ad vs. an ad that lets people flip through part of the guide in their feed. | Single image: one graphic with the guide cover | Document ad: first 3 pages of the guide, swipeable | Social |
 | 3 | **Question vs. statement headline.** Same message, different form. | "Duplicate Records Slowing Sales?" | "Remove Duplicate CRM Records" | Search and social |
 | 4 | **Adding a customer proof line.** Does a proof point make people trust a new vendor enough to fill out the form? | With proof: "Used by 300+ data teams" (sample claim) | No proof line | Search and social |
