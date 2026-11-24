@@ -26,11 +26,11 @@ PRIMARY = "MQLs (CRM)"
 PLAN = [
     (1, SEARCH, "Consideration", "Role callout in headline",
      "Naming the buyer's role will lift MQLs because it screens out clicks from people outside the target role",
-     'General: "Customer Data Cleanup Software"', 'Role: "For RevOps Teams: Clean CRM Data"',
+     'General: "Customer Data Cleanup Software"', 'Role: "For Data Leaders: Clean Customer Data"',
      "Keywords; descriptions; landing page; budget; dates", "w1-general", "w1-role"),
     (1, SOCIAL, "Consideration", "Role callout in headline",
      "Same idea as W1-Search, so we learn whether it holds across channels",
-     'General: "Clean customer data in days, not quarters"', 'Role: "RevOps teams: clean your CRM in days"',
+     'General: "Clean customer data in days, not quarters"', 'Role: "Data leaders: clean up customer data in days"',
      "Audience; image; intro text; landing page; budget; dates", "w1-general", "w1-role"),
     (2, SEARCH, "Consideration", "Problem-led vs. solution-led headline",
      "A problem-led headline will bring more MQLs than a solution-led one because searchers feel the pain before they know the fix",
@@ -66,7 +66,7 @@ PLAN = [
      "Audience; ad; page copy and design; budget; dates", "w5-form-short", "w5-form-long"),
     (6, SOCIAL, "Awareness", "Audience targeting",
      "Job function plus seniority will reach more of the right buyers than a job title list because titles vary so much",
-     "Job titles: RevOps Manager, CRM Administrator, Sales Operations Director (25 titles in all)", "Job function + seniority: Operations or IT, Manager to Director",
+     "Job titles: VP of Data, Head of Data Engineering, Director of Analytics (25 titles in all)", "Job function + seniority: Data or IT, Director to VP",
      "Ad; offer; landing page; budget; dates", "w6-aud-title", "w6-aud-function"),
 ]
 SHORT = {SEARCH: "Search", SOCIAL: "Social"}
@@ -194,7 +194,7 @@ def build():
               ("utm_campaign", "2026-q3-clean-customer-data", "2026-q3-clean-customer-data"),
               ("utm_source", "google", "linkedin"),
               ("utm_medium", "paid-search", "paid-social"),
-              ("utm_term", "{keyword}", "revops-function-senior")]
+              ("utm_term", "{keyword}", "data-function-senior")]
     for i, (lab, s, l) in enumerate(inputs, 5):
         body(tl.cell(i, 1, lab), bold=True)
         body(tl.cell(i, 2, ""))

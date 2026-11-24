@@ -31,17 +31,17 @@ All data and examples here are made up. Nothing comes from a real company.
 
 ### The sample test waves
 
-The sample company is Fernhill Software, a made-up company that sells software to clean up duplicate and messy customer records in a CRM. Its buyers are revenue operations (RevOps) and CRM teams. Each wave tests one thing, version A vs. version B.
+The sample company is Fernhill Software, a made-up company that sells the Fernhill Data Quality Platform, which finds and merges duplicate customer records across systems. Its buyers are data and analytics leaders. It is the same company as in the Campaign Assistant, the Product Marketing Agent and the Content Strategy Assistant. Each wave tests one thing, version A vs. version B.
 
 | Wave | What we're testing | Version A (example) | Version B (example) | Where |
 |---|---|---|---|---|
-| 1 | **Naming the buyer's role in the headline.** Does saying who the ad is for bring in better leads? | General: "Customer Data Cleanup Software" | Role: "For RevOps Teams: Clean CRM Data" | Search and social |
+| 1 | **Naming the buyer's role in the headline.** Does saying who the ad is for bring in better leads? | General: "Customer Data Cleanup Software" | Role: "For Data Leaders: Clean Customer Data" | Search and social |
 | 2 | **Problem-led vs. solution-led headline.** Does naming the pain bring better leads than naming the fix? The keywords stay the same. | Problem-led: "Bad CRM Data Is Costing You Leads" | Solution-led: "One Clean Record for Every Lead" | Search |
 | 2 | **Ad format.** A plain image ad vs. an ad that lets people flip through part of the guide in their feed. | Single image: one graphic with the guide cover | Document ad: first 3 pages of the guide, swipeable | Social |
 | 3 | **Question vs. statement headline.** Same message, different form. | "Duplicate Records Slowing Sales?" | "Remove Duplicate CRM Records" | Search and social |
 | 4 | **Adding a customer proof line.** Does a proof point make people trust a new vendor enough to fill out the form? | With proof: "Used by 300+ data teams" (sample claim) | No proof line | Search and social |
 | 5 | **Form length on the landing page.** Fewer fields usually means more leads. More fields can mean better leads. | Short form, 4 fields: name, work email, company, job title | Long form, 7 fields: also asks company size, CRM used, and biggest data problem | Search and social |
-| 6 | **How to target the audience on LinkedIn.** A hand-picked list of job titles vs. LinkedIn's job function and seniority filters. | Job titles: RevOps Manager, CRM Administrator, Sales Operations Director (25 in all) | Job function + seniority: Operations or IT, Manager to Director | Social |
+| 6 | **How to target the audience on LinkedIn.** A hand-picked list of job titles vs. LinkedIn's job function and seniority filters. | Job titles: VP of Data, Head of Data Engineering, Director of Analytics (25 in all) | Job function + seniority: Data or IT, Director to VP | Social |
 
 Test IDs are wave + channel (`W1-Search`, `W1-Social`). Running one idea on both channels shows whether it holds across them.
 
