@@ -8,6 +8,28 @@ Plan, run and learn from B2B paid media tests that a real team can keep up with:
 
 All data and examples here are made up. Nothing comes from a real company.
 
+## What you give it, and what you get back
+
+### What you give it
+
+| You provide | What it is | Used for |
+|---|---|---|
+| Your funnel rates | Click rate, lead rate and the share that become MQLs or SQLs | Working out how much volume a test needs |
+| Budget, cost per click and wait time | What you can spend, and how long leads take to qualify | Knowing when a test can be read |
+| Your test ideas | What you want to change, and why | The test plan |
+| Results (after the test) | Clicks, leads and qualified leads for version A and B | Reading the winner |
+
+### What you get back
+
+| Output | What it looks like | Where |
+|---|---|---|
+| Test planner workbook | Tests in waves, tracking links, run lengths, a results log and a learning library, ready in Excel or Google Sheets | `templates/test-planner.xlsx` |
+| Test size plan | Clicks, impressions, cost and the week you can read each funnel stage, plus the deepest stage you can really decide on | `funnel` |
+| Sample size | How many you need to measure one rate | `size` |
+| Smallest lift | The smallest difference you can detect with your volume | `mdl` |
+| Result read | Real difference or noise, stage by stage | `read`, `report` |
+| Test plan check | Flags missing fields, two-variable tests and identical tracking tags | `validate` |
+
 ## Start here: the test planner workbook
 
 `templates/test-planner.xlsx` is a working planner for a sample campaign (Fernhill Software, "2026-Q3 Clean Customer Data"). Open it in Excel or Google Sheets. No code needed.
